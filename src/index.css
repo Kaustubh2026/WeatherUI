@@ -2390,18 +2390,23 @@ body {
 
 /* Mobile Navigation Styles */
 @media screen and (max-width: 768px) {
+  /* Hide the default sidebar */
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Mobile Navigation */
   .mobile-nav {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 80%;
+    width: 85%;
     height: 100%;
     background: #1a1f2e;
     z-index: 1000;
-    padding: 4rem 1rem 2rem;
+    padding: 5rem 1rem 2rem;
     transition: left 0.3s ease-in-out !important;
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
-    display: block;
   }
 
   .mobile-nav.active {
@@ -2427,6 +2432,7 @@ body {
     gap: 1rem;
     border: none;
     cursor: pointer;
+    transition: background 0.2s ease !important;
   }
 
   .mobile-nav .nav-tab:hover {
@@ -2438,7 +2444,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
-  /* Hamburger menu */
+  /* Hamburger Menu */
   .hamburger-menu {
     width: 44px;
     height: 44px;
@@ -2462,7 +2468,7 @@ body {
     border-radius: 2px;
   }
 
-  /* Header layout */
+  /* Header Layout */
   .header-top {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -2480,7 +2486,7 @@ body {
     margin-left: 0.5rem;
   }
 
-  /* Temperature toggle */
+  /* Temperature Toggle */
   .temp-unit-switch {
     display: flex;
     align-items: center;
@@ -2488,8 +2494,6 @@ body {
     border-radius: 20px;
     padding: 3px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    z-index: 2;
   }
 
   .temp-unit-switch button {
@@ -2527,10 +2531,21 @@ body {
     visibility: visible;
   }
 
-  /* Main content */
+  /* Main Content */
   .app-container {
     position: relative;
     z-index: 1;
+  }
+
+  /* Ensure proper stacking */
+  .mobile-nav {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .mobile-nav.active {
+    pointer-events: auto;
+    opacity: 1;
   }
 }
 
@@ -2539,6 +2554,10 @@ body {
   .mobile-nav,
   .mobile-nav-overlay,
   .hamburger-menu {
-    display: none;
+    display: none !important;
+  }
+
+  .sidebar {
+    display: flex !important;
   }
 }
