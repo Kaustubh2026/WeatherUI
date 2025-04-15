@@ -2320,81 +2320,30 @@ body {
 
 /* Mobile Navigation Styles */
 @media screen and (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
-
-  .hamburger-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 24px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 10;
-  }
-
-  .hamburger-line {
-    width: 100%;
-    height: 2px;
-    background-color: #fff;
-    transition: transform 0.3s ease;
-  }
-
   .mobile-nav {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-    overflow: hidden;
-    transition: height 0.3s ease;
-    z-index: 1000;
-  }
-
-  .mobile-nav.active {
-    height: auto;
-    padding: 1rem;
-  }
-
-  .mobile-nav .nav-tabs {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.95) !important;
   }
 
   .mobile-nav .nav-tab {
-    width: 100%;
-    padding: 0.75rem;
-    justify-content: flex-start;
-    gap: 0.75rem;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 500;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
   }
 
   .mobile-nav .nav-tab:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2) !important;
   }
 
   .mobile-nav .nav-tab.active {
-    background: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2) !important;
+    font-weight: 600 !important;
   }
 
   .mobile-nav .tab-label {
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: inherit;
+    color: #ffffff !important;
+    font-size: 1rem !important;
   }
 }
 
