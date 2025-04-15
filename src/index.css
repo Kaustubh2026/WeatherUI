@@ -2393,40 +2393,30 @@ body {
   .mobile-nav {
     position: fixed;
     top: 0;
-    left: -250px; /* Start off-screen */
-    width: 250px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(12px);
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    background: #1a1f2e;
     z-index: 1000;
-    padding: 5rem 1rem 2rem;
-    transition: transform 0.3s ease-in-out !important;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    padding: 4rem 1rem 2rem;
+    transition: left 0.3s ease-in-out !important;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    display: block;
   }
 
   .mobile-nav.active {
-    transform: translateX(250px);
-  }
-
-  /* Push main content when menu is open */
-  .app-container {
-    transition: transform 0.3s ease-in-out !important;
-  }
-
-  .mobile-nav.active + .app-container {
-    transform: translateX(250px);
+    left: 0;
   }
 
   .mobile-nav .nav-tabs {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem 0;
   }
 
   .mobile-nav .nav-tab {
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     color: white;
@@ -2435,11 +2425,12 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
-    transition: background 0.2s ease !important;
+    border: none;
+    cursor: pointer;
   }
 
   .mobile-nav .nav-tab:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
   }
 
   .mobile-nav .nav-tab.active {
@@ -2447,21 +2438,21 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
-  /* Hamburger menu styling */
+  /* Hamburger menu */
   .hamburger-menu {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 6px;
-    padding: 10px;
+    padding: 12px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     z-index: 1001;
-    margin-right: 1rem;
+    position: relative;
   }
 
   .hamburger-line {
@@ -2469,40 +2460,56 @@ body {
     height: 2px;
     background-color: white;
     border-radius: 2px;
-    transition: transform 0.3s ease !important;
   }
 
-  /* Adjust header layout */
+  /* Header layout */
   .header-top {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     width: 100%;
     padding: 0.5rem;
+    position: relative;
+    z-index: 2;
   }
 
   .logo {
     font-size: 1.4rem;
     font-weight: 600;
+    margin-left: 0.5rem;
   }
 
+  /* Temperature toggle */
   .temp-unit-switch {
-    padding: 3px;
+    display: flex;
+    align-items: center;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
+    padding: 3px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
   }
 
   .temp-unit-switch button {
-    padding: 5px 10px;
-    min-width: 35px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-weight: 500;
     font-size: 0.9rem;
+    min-width: 40px;
   }
 
-  /* Add overlay when menu is open */
+  .temp-unit-switch button.active {
+    background: white;
+    color: #1a1a1a;
+  }
+
+  /* Overlay */
   .mobile-nav-overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -2511,16 +2518,23 @@ body {
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
     opacity: 0;
-    transition: opacity 0.3s ease !important;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out !important;
   }
 
   .mobile-nav-overlay.active {
-    display: block;
     opacity: 1;
+    visibility: visible;
+  }
+
+  /* Main content */
+  .app-container {
+    position: relative;
+    z-index: 1;
   }
 }
 
-/* Ensure desktop layout remains unchanged */
+/* Hide mobile elements on desktop */
 @media screen and (min-width: 769px) {
   .mobile-nav,
   .mobile-nav-overlay,
