@@ -198,7 +198,7 @@ const App = () => {
 
         // First, get the weather data to obtain coordinates
         const weatherResponse = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${searchQuery || 'auto:ip'}&units=metric&appid=8ff8942804f03ac79850560db9d045ef`
+          `https://api.openweathermap.org/data/2.5/forecast?q=${searchQuery || 'London,UK'}&units=metric&appid=8ff8942804f03ac79850560db9d045ef`
         );
         const weatherData = await weatherResponse.json();
 
@@ -253,7 +253,7 @@ const App = () => {
           windData: weatherData.list.slice(0, 8).map((hour: any) => ({
             speed: Math.round(hour.wind.speed * 3.6),
             direction: hour.wind.deg,
-            gust: Math.round((hour.wind.gust || 0) * 3.6),
+            gust: Math.round(hour.wind.gust * 3.6),
             time: new Date(hour.dt * 1000).toLocaleTimeString('en-US', { hour: 'numeric' })
           })),
           precipitationData: weatherData.list.slice(0, 8).map((hour: any) => ({
@@ -265,14 +265,14 @@ const App = () => {
           })),
           radarData: weatherData.list.slice(0, 8).map((hour: any) => ({
             time: new Date(hour.dt * 1000).toLocaleTimeString('en-US', { hour: 'numeric' }),
-            intensity: hour.rain ? (hour.rain['3h'] || 0) / 10 : hour.snow ? (hour.snow['3h'] || 0) / 10 : 0,
+            intensity: hour.rain ? hour.rain['3h'] || 0 : hour.snow ? hour.snow['3h'] || 0 : 0,
             coverage: hour.clouds.all,
             type: hour.weather[0].main.toLowerCase().includes('rain') ? 'rain' : 
                   hour.weather[0].main.toLowerCase().includes('snow') ? 'snow' : 'mixed'
           }))
         });
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to fetch weather data');
+        setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
         setLoading(false);
       }
@@ -530,7 +530,7 @@ const App = () => {
           <div 
             className="glass-card forecast-view" 
             style={{
-              background: 'rgba(255, 255, 255, 0.15)',
+              background: 'rgba(0, 0, 0, 0.4)',
               backdropFilter: 'blur(10px)',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
               border: '1px solid rgba(255, 255, 255, 0.2)'
@@ -591,7 +591,7 @@ const App = () => {
           <div 
             className="glass-card" 
             style={{
-              background: 'rgba(255, 255, 255, 0.15)',
+              background: 'rgba(0, 0, 0, 0.4)',
               backdropFilter: 'blur(10px)',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
               border: '1px solid rgba(255, 255, 255, 0.2)'
@@ -922,7 +922,7 @@ const App = () => {
             <Cloud className="logo-icon" style={{
               animation: 'float 3s ease-in-out infinite'
             }} />
-            <span>forecast now</span>
+            <span>WeatherTickler</span>
           </div>
 
           <div className="header-controls">
