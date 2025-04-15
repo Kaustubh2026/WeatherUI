@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activePage, onPageChange }) => {
   const menuItems = [
     { icon: Home, label: 'Dashboard', page: 'dashboard' },
     { icon: Map, label: 'Weather Map', page: 'map' },
-    { icon: Calendar, label: 'Forecast', page: 'forecast' },
+    { icon: Calendar, label: 'Weather Vibes', page: 'forecast' },
     { icon: AlertCircle, label: 'Alerts', page: 'alerts' },
     { icon: Wind, label: 'Wind Analysis', page: 'wind' },
     { icon: Droplets, label: 'Precipitation', page: 'precipitation' },

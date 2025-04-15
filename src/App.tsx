@@ -183,7 +183,7 @@ const App = () => {
   // Tabs configuration
   const tabs = [
     { id: 'current', icon: <Sun />, label: 'Current' },
-    { id: 'forecast', icon: <Cloud />, label: 'Forecast' },
+    { id: 'forecast', icon: <Cloud />, label: 'Weather Vibes' },
     { id: 'wind', icon: <Wind />, label: 'Wind' },
     { id: 'precipitation', icon: <Droplet />, label: 'Precipitation' },
     { id: 'radar', icon: <Map />, label: 'Radar' },
@@ -536,7 +536,7 @@ const App = () => {
               border: '1px solid rgba(255, 255, 255, 0.2)'
             }}
           >
-            <h2 className="section-title" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)' }}>5-Day Forecast</h2>
+            <h2 className="section-title" style={{ textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)' }}>Weather Vibes</h2>
             <div className="forecast-content">
               <div className="forecast-cards">
                 {weatherData.forecast.map((day, index) => (
